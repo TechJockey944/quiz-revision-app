@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Pathway Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <h1>Study Pathway Builder</h1>
+      <p>Upload a prompt or file, then get a learning pathway, a simple essay, flashcards, and a quiz tailored to your weaknesses.</p>
+    </header>
+
+    <section class="card input-card">
+      <h2>Step 1: Add Your Study Material</h2>
+      <label for="prompt-input">Paste a prompt or topic description:</label>
+      <textarea id="prompt-input" rows="7" placeholder="Describe the topic, paste your notes, or upload files below..."></textarea>
+
+      <label for="file-input">Or upload text files:</label>
+      <input id="file-input" type="file" multiple accept=".txt,.md,.csv" />
+      <div class="actions">
+        <button id="analyze-btn">Analyze and Build Pathway</button>
+      </div>
+    </section>
+
+    <section id="result-area" class="hidden">
+      <section class="card summary-card">
+        <h2>Learning Pathway</h2>
+        <div id="pathway-output"></div>
+      </section>
+
+      <section class="card essay-card">
+        <h2>Simple Topic Essay</h2>
+        <div id="essay-output"></div>
+      </section>
+
+      <section class="card questionnaire-card">
+        <h2>Step 2: Quiz and Flashcards</h2>
+        <div class="questionnaire-grid">
+          <label>
+            Number of questions
+            <input id="question-count" type="number" min="1" max="20" value="5" />
+          </label>
+          <label>
+            Time limit (minutes)
+            <input id="time-limit" type="number" min="0" value="0" />
+          </label>
+          <label class="checkbox-label">
+            <input id="flashcard-toggle" type="checkbox" checked />
+            Create flashcards
+          </label>
+        </div>
+        <div class="actions">
+          <button id="generate-btn">Generate Quiz & Flashcards</button>
+        </div>
+      </section>
+
+      <section id="flashcard-area" class="card hidden">
+        <h2>Flashcards</h2>
+        <div id="flashcards-output"></div>
+      </section>
+
+      <section id="quiz-area" class="card hidden">
+        <div class="quiz-header">
+          <h2>Quiz</h2>
+          <div id="timer-text" class="timer-text"></div>
+        </div>
+        <form id="quiz-form"></form>
+        <div class="actions quiz-actions">
+          <button id="submit-quiz-btn" type="button">Submit Quiz</button>
+        </div>
+      </section>
+
+      <section id="feedback-area" class="card hidden">
+        <h2>Quiz Results & Adaptive Pathway</h2>
+        <div id="feedback-output"></div>
+      </section>
+    </section>
+
+    <footer>
+      <p>Designed to help you study by turning your notes into a personalized learning pathway.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
